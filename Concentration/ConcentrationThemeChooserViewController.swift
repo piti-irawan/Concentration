@@ -15,6 +15,11 @@ class ConcentrationThemeChooserViewController: UIViewController, UISplitViewCont
         "Faces":"😀😢😉😅😂🤣😇🙃😍",
     ]
     
+    private var splitViewDetailConcentrationViewController: ConcentrationViewController? {
+        return splitViewController?.viewControllers.last as? ConcentrationViewController
+    }
+    private var lastSeguedToConcentrationViewController: ConcentrationViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         splitViewController?.delegate = self
@@ -29,12 +34,6 @@ class ConcentrationThemeChooserViewController: UIViewController, UISplitViewCont
         }
         return false
     }
-    
-    private var splitViewDetailConcentrationViewController: ConcentrationViewController? {
-        return splitViewController?.viewControllers.last as? ConcentrationViewController
-    }
-    
-    private var lastSeguedToConcentrationViewController: ConcentrationViewController?
     
     @IBAction func chooseTheme(_ sender: Any) {
         if let cvc = splitViewDetailConcentrationViewController {
