@@ -18,7 +18,8 @@ class ConcentrationViewController: UIViewController {
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
     
-    private var emojiChoices = "🦇😱🙀😈🎃👻🍭🍬🍎"
+    private static var initialEmojiChoices = "🦇😱🙀😈🎃👻🍭🍬🍎"
+    private var emojiChoices = ConcentrationViewController.initialEmojiChoices
     private var emoji = [ConcentrationCard:String]()
     var theme: String? {
         didSet {
@@ -39,6 +40,8 @@ class ConcentrationViewController: UIViewController {
     
     @IBAction private func touchNewGameButton(_ sender: UIButton) {
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        emojiChoices = theme ?? ConcentrationViewController.initialEmojiChoices
+        emoji = [:]
         updateViewFromModel()
     }
     
